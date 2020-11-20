@@ -26,5 +26,7 @@ class ProductWrapper
   def find(code)
     product = products.detect { |prod| prod.code == code }
     raise NotFound, 'Product Not Found' unless product
+
+    product
   end
 end

@@ -14,6 +14,14 @@ class Product
     @packs = build_packs(product_packs)
   end
 
+  # Get Product Packs Minimum Quantity
+  # @author Peter John Alvarado <redjoker011@gmail.com>
+  #
+  # @return [Integer] minimum purchase quantity
+  def min_purchase_quantity
+    packs.map(&:quantity).min
+  end
+
   private
 
   # Product Packs Builder
@@ -32,14 +40,5 @@ class Product
         )
       end
     end
-  end
-
-  # Get Product Packs Minimum Quantity
-  # @author Peter John Alvarado <redjoker011@gmail.com>
-  # @private
-  #
-  # @return [Integer] minimum purchase quantity
-  def min_purchase_quantity
-    packs.map(&:quantity).min
   end
 end
