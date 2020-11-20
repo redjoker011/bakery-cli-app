@@ -20,11 +20,11 @@ class ProductWrapper
   # Method for finding product object
   # @author Peter John Alvarado <redjoker011@gmail.com>
   #
-  # @param [String] name product name
+  # @param [String] code product code
   #
   # @return [Product] product object
-  def find(name)
-    product = products.detect { |prod| prod.name == name }
+  def find(code)
+    product = products.detect { |prod| prod.code == code }
     raise NotFound, 'Product Not Found' unless product
   end
 end

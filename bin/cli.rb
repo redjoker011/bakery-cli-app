@@ -1,5 +1,7 @@
 require 'tty-prompt'
 require_relative '../lib/seed.rb'
+require_relative '../lib/cart_item'
+require_relative '../lib/cart'
 
 # Initialize TTY Lib
 # @author Peter John Alvarado <redjoker011@gmail.com>
@@ -10,16 +12,27 @@ require_relative '../lib/seed.rb'
 #
 # @return [Void] no return value
 def start_purchase
-  product_selection
-  ask_quantity
+  product_code = product_selection
+  qty = ask_quantity
+
+  product = PRODUCT_WRAPPER.find(product_code)
+  item = CartItem.new(product: product, quantity: qty)
+  cart = Cart.new
+  cart.add(item)
+rescue StandardError => e
+  puts e.message
 end
 
 # Build Product Selection Options
 # @author Peter John Alvarado <redjoker011@gmail.com>
 #
-# @return [Void] no return value
+# @return [Array<Hash>] product options
 def product_opts
-  PRODUCTS.products.map(&:name)
+  [].tap do |opts|
+    PRODUCT_WRAPPER.products.each do |product|
+      opts << { label: product.name, val: product.code }
+    end
+  end
 end
 
 # Handle Product Selection
@@ -27,7 +40,11 @@ end
 #
 # @return [Void] no return value
 def product_selection
-  @prompt.select('Choose Product', product_opts)
+  @prompt.select('Choose Product') do |menu|
+    product_opts.each do |opts|
+      menu.choice opts[:label], opts[:val]
+    end
+  end
 end
 
 # Handle Quantity Input
@@ -43,6 +60,6 @@ end
 
 p 'Initializing App Please wait...'
 p 'Seeding Products...'
-PRODUCTS = Seed.new.products
+PRODUCT_WRAPPER = Seed.new.products
 
 start_purchase
