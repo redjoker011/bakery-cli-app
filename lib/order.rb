@@ -14,8 +14,16 @@ class Order
     @cart = cart
   end
 
+  # Order Total Amount
+  # @author Peter John Alvarado <redjoker011@gmail.com>
+  #
+  # @return [Float] total
+  def total
+    cart.items.sum(&:sub_total).round(2)
+  end
+
   def print_summary
-    puts 'Printing Order Summary...'
+    puts "\nPrinting Order Summary...\n\n"
 
     @cart.items.each do |item|
       puts "#{item.quantity} pcs #{item.product.name} "\
@@ -23,8 +31,11 @@ class Order
 
       item.item_breakdown.each do |breakdown|
         puts "\t#{breakdown[:quantity]} x #{breakdown[:pack_qty]} "\
-             "$#{breakdown[:price]}\n"
+             "€#{breakdown[:price_per_item]}\n"
       end
     end
+
+    puts '==========================================='
+    puts "Grand Total: €#{total}"
   end
 end

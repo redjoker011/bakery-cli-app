@@ -30,10 +30,14 @@ class CartItemWrapper
     breakdown(packs) while @purchase_qty != 0
   end
 
+  # Cart Item Sub Total
+  # @author Peter John Alvarado <redjoker011@gmail.com>
+  #
+  # @return [Float] item sub total
   def sub_total
     total = 0
     @item_breakdown.each do |breakdown|
-      total += breakdown[:price]
+      total += breakdown[:total_price]
     end
     total.round(2)
   end
@@ -60,7 +64,8 @@ class CartItemWrapper
       @item_breakdown << {
         quantity: packs_count,
         pack_qty: pack_qty,
-        price: (pack.price * packs_count).round(2)
+        total_price: (pack.price * packs_count).round(2),
+        price_per_item: pack.price
       }
     end
   end
