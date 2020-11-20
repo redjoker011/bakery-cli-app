@@ -1,9 +1,11 @@
-# Cart Class
+require_relative './cart_item_wrapper.rb'
+
+# pack_item_count Cart Class
 # @author Peter John Alvarado <redjoker011@gmail.com>
 class Cart
   InvalidQuantity = Class.new(StandardError)
 
-  # @attr_reader [Array<Order>] items cart items
+  # @attr_reader [Array<CartItemWrapper>] items cart item wrapper list
   attr_reader :items
 
   def initialize
@@ -25,6 +27,6 @@ class Cart
       raise InvalidQuantity, "Minimum quantity for this product is #{min_purchase_quantity}"
     end
 
-    @items.push(item)
+    @items.push(CartItemWrapper.new(item))
   end
 end

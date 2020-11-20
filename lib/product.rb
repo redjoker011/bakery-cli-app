@@ -22,6 +22,22 @@ class Product
     packs.map(&:quantity).min
   end
 
+  # Sort Product Packs in descending Order
+  # @author Peter John Alvarado <redjoker011@gmail.com>
+  #
+  # @return [Array<Pack>] product list
+  def sorted_packs_desc
+    @packs.sort_by(&:quantity).reverse unless @packs.empty?
+  end
+
+  # Product Type Checker
+  # @author Peter John Alvarado <redjoker011@gmail.com>
+  #
+  # @return [Boolean]
+  def croissant?
+    @code == 'CF'
+  end
+
   private
 
   # Product Packs Builder
