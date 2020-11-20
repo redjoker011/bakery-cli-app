@@ -19,7 +19,7 @@ end
 #
 # @return [Void] no return value
 def product_opts
-  PRODUCTS.map(&:name)
+  PRODUCTS.products.map(&:name)
 end
 
 # Handle Product Selection

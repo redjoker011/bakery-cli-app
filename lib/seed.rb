@@ -1,4 +1,5 @@
 require_relative './product.rb'
+require_relative './product_wrapper.rb'
 
 # Seed Products
 # @author Peter John Alvarado <redjoker011@gmail.com>
@@ -52,17 +53,17 @@ class Seed
   # @author Peter John Alvarado <redjoker011@gmail.com>
   # @private
   #
-  # @return [Array<Product>] products
+  # @return [ProductWrapper] product wrapper object
   def seed
-    [].tap do |list|
-      seed_data.each do |data|
-        product = Product.new(
-          name: data[:name],
-          code: data[:code],
-          product_packs: data[:packs]
-        )
-        list << product
-      end
+    list = []
+    seed_data.each do |data|
+      product = Product.new(
+        name: data[:name],
+        code: data[:code],
+        product_packs: data[:packs]
+      )
+      list << product
     end
+    ProductWrapper.new(list)
   end
 end
