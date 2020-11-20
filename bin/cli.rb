@@ -2,6 +2,7 @@ require 'tty-prompt'
 require_relative '../lib/seed.rb'
 require_relative '../lib/cart_item'
 require_relative '../lib/cart'
+require_relative '../lib/order'
 
 # Initialize TTY Lib
 # @author Peter John Alvarado <redjoker011@gmail.com>
@@ -12,19 +13,21 @@ require_relative '../lib/cart'
 # @return [Void] no return value
 def start_purchase
   cart = Cart.new
-  ordering_process(cart)
+  order = Order.new(cart)
+  ordering_process(cart: cart, order: order)
+  order.print_summary
 rescue StandardError => e
   puts e.message
 end
 
-def ordering_process(cart)
+def ordering_process(cart:, order:)
   product_code = product_selection
   qty = ask_quantity
 
   product = PRODUCT_WRAPPER.find(product_code)
   item = CartItem.new(product: product, quantity: qty)
   cart.add(item)
-  ordering_process(cart) if @prompt.yes?('Order More Products ?')
+  ordering_process(cart: cart, order: order) if @prompt.yes?('Order More Products ?')
 end
 
 # Build Product Selection Options
@@ -56,7 +59,7 @@ end
 #
 # @return [Void] no return value
 def ask_quantity
-  @prompt.ask('Enter Quantity') do |q|
+  @prompt.ask('Enter Quantity', convert: :integer) do |q|
     q.required true
     q.validate(/\d/, 'Invalid Quantity')
   end
