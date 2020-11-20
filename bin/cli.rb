@@ -6,21 +6,25 @@ require_relative '../lib/cart'
 # Initialize TTY Lib
 # @author Peter John Alvarado <redjoker011@gmail.com>
 @prompt = TTY::Prompt.new
-
 # Method for handling purchase flow
 # @author Peter John Alvarado <redjoker011@gmail.com>
 #
 # @return [Void] no return value
 def start_purchase
+  cart = Cart.new
+  ordering_process(cart)
+rescue StandardError => e
+  puts e.message
+end
+
+def ordering_process(cart)
   product_code = product_selection
   qty = ask_quantity
 
   product = PRODUCT_WRAPPER.find(product_code)
   item = CartItem.new(product: product, quantity: qty)
-  cart = Cart.new
   cart.add(item)
-rescue StandardError => e
-  puts e.message
+  ordering_process(cart) if @prompt.yes?('Order More Products ?')
 end
 
 # Build Product Selection Options
