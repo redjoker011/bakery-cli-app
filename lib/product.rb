@@ -18,6 +18,7 @@ class Product
 
   # Product Packs Builder
   # @author Peter John Alvarado <redjoker011@gmail.com>
+  # @private
   #
   # @param [Array<Object>] packs list of product packs data
   #
@@ -31,5 +32,14 @@ class Product
         )
       end
     end
+  end
+
+  # Get Product Packs Minimum Quantity
+  # @author Peter John Alvarado <redjoker011@gmail.com>
+  # @private
+  #
+  # @return [Integer] minimum purchase quantity
+  def min_purchase_quantity
+    packs.map(&:quantity).min
   end
 end
