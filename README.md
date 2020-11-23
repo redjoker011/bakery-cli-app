@@ -2,7 +2,7 @@
 Bakery Ordering CLI App built in Ruby and a powerful Ruby library for
 interactive cli app using [tty-prompt](https://github.com/piotrmurach/tty-prompt)
 
-![](https://media.giphy.com/media/9JxXKlcDHFiJipqlYK/giphy.gif)
+![](https://media.giphy.com/media/2fA8D75RSYIwTc7feu/giphy.gif)
 
 ## Installation
 - Clone repository and go to project directory

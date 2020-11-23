@@ -6,3 +6,4 @@ lib/cart_item.rb 952f57579aa00ecb2db89838cb3584aa28cd2d28
 lib/product_pack.rb 32a9bbf7af56755af10908226783c05fa762e47d
 lib/product_wrapper.rb 35e8f0272efee3c49fb20a9b25436fbd67166d47
 lib/cart_item_wrapper.rb 44051fa05bdb87758f701a8755211f1926eba0b4
+bin/cli.rb 2b0d7d9eaa9506017caeca5d382bffd3639d4e45
