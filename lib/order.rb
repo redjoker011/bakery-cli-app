@@ -7,7 +7,7 @@ class Order
   # Constructor
   # @author Peter John Alvarado <redjoker011@gmail.com>
   #
-  # @param [Cart] string argument
+  # @param [Cart] cart argument
   #
   # @return [Void] no return value
   def initialize(cart)

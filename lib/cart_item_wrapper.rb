@@ -9,7 +9,7 @@ class CartItemWrapper
   # Constructor
   # @author Peter John Alvarado <redjoker011@gmail.com>
   #
-  # @param [CartItem] cart item cart item object
+  # @param [CartItem] cart_item cart item object
   # @return [Void] no return value
   def initialize(cart_item)
     @item = cart_item
