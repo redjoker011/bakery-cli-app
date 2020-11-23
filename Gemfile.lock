@@ -1,8 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    minitest (5.14.2)
     pastel (0.8.0)
       tty-color (~> 0.5)
+    rake (13.0.1)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
     tty-prompt (0.22.0)
@@ -19,6 +21,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest (~> 5.0)
+  rake
   tty-prompt
 
 RUBY VERSION
