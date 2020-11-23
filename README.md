@@ -4,6 +4,9 @@ interactive cli app using [tty-prompt](https://github.com/piotrmurach/tty-prompt
 
 ![](https://media.giphy.com/media/2fA8D75RSYIwTc7feu/giphy.gif)
 
+## Output
+![](./output.png)
+
 ## Installation
 - Clone repository and go to project directory
 - Install dependencies via `bundle install`
