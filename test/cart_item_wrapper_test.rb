@@ -18,6 +18,13 @@ class CartItemWrapperTest < Minitest::Test
   end
 
   def test_cart_item_wrapper_sub_total
-    assert @wrapper.sub_total, 1.5
+    assert_equal @wrapper.sub_total, 1.5
+  end
+
+  def test_cart_item_wrapper_sub_total_with_multiple_purchase
+    item = CartItem.new(product: @product, quantity: 2)
+    wrapper = ::CartItemWrapper.new(item)
+
+    assert_equal wrapper.sub_total, 3.0
   end
 end
