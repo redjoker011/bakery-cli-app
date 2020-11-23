@@ -8,7 +8,7 @@ class CartItemTest < Minitest::Test
     @product = Product.new({ name: 'Banana Loaf', code: 'BL', product_packs: packs })
   end
 
-  def test_product_wrappper_creation
+  def test_cart_item_creation
     item = ::CartItem.new(product: @product, quantity: 1)
 
     assert_equal item.product, @product
