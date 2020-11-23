@@ -14,4 +14,12 @@ class ProductTest < Minitest::Test
     assert_equal @product_data[:code], product.code
     assert_equal product.packs.length, 1
   end
+
+  def test_product_is_crossaint
+    data = @product_data
+    data[:code] = 'CF'
+    product = ::Product.new(data)
+
+    assert product.croissant?
+  end
 end
